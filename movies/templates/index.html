@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<header >
+  <img src="{% static 'header1.jpg' %}" class="d-block w-100" alt="...">
+</header>
+
+<section class="container">
+  <h1 class="text-center my-3">영화목록</h1>
+  <div class="row mb-5">
+    {% for i in top_movie_list %}
+    <article class="col-md-6 col-lg-4 col-xl-3 my-1">
+      <div class="card" data-bs-toggle="modal" data-bs-target="#{{ i.modal_id }}">
+        <img src="https://image.tmdb.org/t/p/w500/{{ i.poster_path }}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{i.title}}</h5>
+          <p class="card-text">{{ i.overview }}</p>
+        </div>
+        <div class="card-footer text-start">
+          {{ i.release_date }}
+        </div>
+      </div>
+    </article>
+    <div class="modal" id="{{ i.modal_id }}" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">{{i.title}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <img src="https://image.tmdb.org/t/p/w500/{{ i.poster_path }}" class="card-img-top" alt="...">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock content %}

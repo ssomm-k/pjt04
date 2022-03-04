@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class='text text-center'>쇼생크 탈출과 비슷한 영화 추천 페이지</h1>
+<div class="card mb-3" >
+  <div class="row g-0">
+    <div class="col-md-4 ">
+      <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" class="img-fluid rounded-start" alt="image">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h4 class="card-title">{{ title }}
+          <button type="button" class="btn btn-success">{{ vote_average }}</button> 
+        </h4>
+        <p class="card-text">{{ overview }}</p>
+        <p class="card-text"><small class="text-muted"> 개봉일 : {{ release_date }}</small></p>
+        <div class="d-grid">
+          <button class="btn bg-info" type="button">
+            <a href="https://www.themoviedb.org/movie/{{ movie_id }}" class="text-white text-decoration-none"> 상세정보 </a>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
